@@ -1,14 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Fire333</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Facilitating Intercultural Relationships Everywhere</title>
+		<link type="text/css" href="/stylesheets/dark-hive/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="javascripts/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="javascripts/jquery-ui-1.8.11.custom.min.js"></script>
+		<script type="text/javascript" src="javascripts/jquery.cycle.lite.min.js"></script>
+		<script type="text/javascript">
+			/* MOVE TO SEPARATE FILE FOR PRODUCTION */
+			$(function(){
+				// Tabs
+				$('#tabs').tabs();
+			});
 
-<%= yield %>
+			$(document).ready(function() {
+				$('.slideshow').cycle({
+					fx: 'fade',
+					speed: 4000
+				});
+			});
+		</script>
+		<style type="text/css">
+			/* MOVE TO SEPARATE FILE FOR PRODUCTION */
+			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+			.demoHeaders { margin-top: 2em; }
+			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			ul#icons {margin: 0; padding: 0;}
+			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+			ul#icons span.ui-icon {float: left; margin: 0 4px;}
 
-</body>
+			.slideshow {
+			  height: 332px;
+			  width: 800px;
+			  margin: auto;
+			  margin-top: 30px;
+			}
+			.transparent_border {
+			  padding-top: 10px;
+			  padding-bottom: 10px;
+			  border: 1px solid #777;
+			  background-color: rgb(238, 238, 238);
+			  //background-color: rgba(238, 238, 238, 0.85);
+			}
+			.slideshow img {
+			  padding: 15px;
+			  border: 1px solid #777;
+			  background-color: rgb(238, 238, 238);
+			  background-color: rgba(238, 238, 238, 0.25);
+			}
+			.background_image {
+			  width: 100%;
+			  position: absolute;
+			  top: 0px;
+			  left: 0;
+			  z-index: -1;
+			}
+			#page {
+			  margin-top: 10px;
+			  width: 800px;
+			  margin: auto;
+			}
+			#tabs a {
+			  color: #bbb;
+			}
+			#tabs a span {
+			  font-weight: bold;
+			  color: #fff;
+			}
+			body {
+			  margin-top: 30px;
+			}
+			#tabs {
+			  margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+	<img class="background_image" src="images/background.png" bgproperties="fixed" />
+    <%= yield %>
+	</body>
 </html>
