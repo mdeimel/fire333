@@ -6,7 +6,6 @@
 		<link type="text/css" href="/stylesheets/dark-hive/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
 		<script type="text/javascript" src="javascripts/jquery-1.5.1.min.js"></script>
 		<script type="text/javascript" src="javascripts/jquery-ui-1.8.11.custom.min.js"></script>
-		<script type="text/javascript" src="javascripts/jquery.cycle.lite.min.js"></script>
 		<script type="text/javascript">
 			/* MOVE TO SEPARATE FILE FOR PRODUCTION */
 			$(function(){
@@ -14,12 +13,52 @@
 				$('#tabs').tabs();
 			});
 
-			$(document).ready(function() {
-				$('.slideshow').cycle({
-					fx: 'fade',
-					speed: 4000
-				});
+			FIRE = {};
+			FIRE.fade_time = 1500;
+			FIRE.slideshow_time = 4000;
+			FIRE.dot_off = 'dot_nav_off';
+			FIRE.dot_on = 'dot_nav_on';
+			FIRE.dot_nav = 'dot_navigation_on';
+			FIRE.slideshow = function() {
+			  // Grab the first image
+			  var image = $('.fadein :first-child');
+			  // Fade the first image out...
+			  image.fadeOut(FIRE.fade_time);
+			  // ... while fading the next image in.
+			  image.next('img').fadeIn(FIRE.fade_time);
+			  // Now append the image to the end of the slideshow
+			  image.appendTo('.fadein');
+			  
+			  // Handle dot navigation
+			  var dot = $("."+FIRE.dot_nav);
+			  var next_dot = dot.next();
+			  // Loop to beginning if necessary
+			  if (next_dot.length === 0) {
+			    next_dot = $('.fadein_dot :first-child');
+			  }
+			  // Remove classes for current dot
+			  dot.removeClass(FIRE.dot_on);
+			  dot.removeClass(FIRE.dot_nav);
+			  dot.addClass(FIRE.dot_off);
+			  // Add classes for next dot
+			  next_dot.removeClass(FIRE.dot_off);
+			  next_dot.addClass(FIRE.dot_on);
+			  next_dot.addClass(FIRE.dot_nav);
+			};
+			
+			$(function() {
+			  // Hide everything but the first image
+			  $('.fadein img:gt(0)').hide();
+			  // Start the slideshow
+			  setInterval(FIRE.slideshow, FIRE.slideshow_time);
 			});
+			
+			/*
+			Selector notes:
+			$("#slideshow_footer ").children(":first-child")
+			$(".ui-icon-radio-off").next()
+			$(".ui-icon-radio-off").removeClass("ui-icon")
+			*/
 		</script>
 		<style type="text/css">
 			/* MOVE TO SEPARATE FILE FOR PRODUCTION */
@@ -74,6 +113,30 @@
 			}
 			#tabs {
 			  margin-top: 20px;
+			}
+			#tabs img {
+			  position: relative;
+			  left: 12px;
+			  top: 2px;
+			}
+			.fadein { position:relative; }
+      .fadein img { position:absolute; left:0; top:0; }
+			#slideshow_footer {
+			  z-index: 4;
+			  position: relative;
+			  top: -15px;
+			  width: 64px;
+			  height: 40px;
+			  margin: 0px auto;
+			}
+			#slideshow_footer span {
+			  float: left;
+			}
+			.dot_nav_on {
+			  background-image: url('images/dot_nav_on.gif');
+			}
+			.dot_nav_off {
+			  background-image: url('images/dot_nav_off.gif');
 			}
 		</style>
 	</head>
