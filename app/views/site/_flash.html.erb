@@ -1,0 +1,22 @@
+<% if !flash.nil? && (!flash[:notice].nil? || !flash[:warning].nil? || !flash[:error].nil?) %>
+  <div id="flash_div" class="ui-widget">
+  <% if !flash[:notice].nil? %>
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			<strong>Notice: </strong> <%= flash[:notice] %></p>
+		</div>
+  <% end %>
+  <% if !flash[:warning].nil? %>
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			<strong>Warning: </strong> <%= flash[:warning] %></p>
+		</div>
+  <% end %>
+  <% if !flash[:error].nil? %>
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+			<strong>Error:</strong> <%= flash[:error] %></p>
+		</div>
+  <% end %>
+  </div>
+<% end %>

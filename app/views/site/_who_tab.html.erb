@@ -1,0 +1,28 @@
+			Explanation of the organization.<br><br>
+			Blog of the leaders.<br><br>
+			Calendar of upcoming events.<br><br>
+<% if !@post.nil? %>
+  <div class="post">
+    <span class="post_title"><%=@post.title%></span>
+    <span class="post_user_name"><%=@post.user.display_name%></span>
+    <div class="post_break"></div>
+    <div class="post_content"><%=simple_format @post.content%></div>
+    <% if @post.id > 1 %>
+      <br>
+      <button id="next_post" type="button" onclick="FIRE.getPost(<%=@post.id-1%>, '<%=session[:login_name]%>')">Next Post</button>
+    <% end %>
+  </div>
+<% end %>
+<% if !session[:login_name].nil? %>
+  <br><br>
+  <% form_tag new_post_path, :method => "post", :id => "new_post" do %>
+    <fieldset>
+      <legend>New Blog Post</legend>
+      Title:<br>
+      <%= text_field_tag :title, nil, :size=>55 %><br>
+      Content:<br>
+      <%= text_area_tag :content, nil, :cols=>55, :rows=>10 %><br>
+      <%= submit_tag "Create" %>
+    </fieldset>
+  <% end %>
+<% end %>

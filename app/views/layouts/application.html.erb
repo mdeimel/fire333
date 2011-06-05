@@ -46,19 +46,78 @@
 			  next_dot.addClass(FIRE.dot_nav);
 			};
 			
+			FIRE.getPost = function(id, loginName) {
+			  FIRE.loginName = loginName; // This can be used to compare against the loginName of the post, to allow a delete button
+		    $.ajax({
+          url: "post/"+id,
+          success: function(val) {
+            // val[0] = post, val[1] = user # this would probably be better setup with a new structure
+            $('.post_title').html(val[0].post.title);
+            $('.post_user_name').html(val[1].user.display_name);
+            $('.post_content').html(val[0].post.content);
+            // Delete NEXT button if they are on the last post
+            if (val[0].post.id <= 1) {
+              $("#next_post").remove();
+            }
+            // ...otherwise update the button to get the next post
+            else {
+              document.getElementById("next_post").onclick = function() {
+                FIRE.getPost(val[0].post.id-1);
+              };
+            }
+          },
+          dataType: "json"
+        }); 
+			};
+			
 			$(function() {
 			  // Hide everything but the first image
 			  $('.fadein img:gt(0)').hide();
 			  // Start the slideshow
 			  setInterval(FIRE.slideshow, FIRE.slideshow_time);
+			  
+			  // Login Dialog
+			  $('#login').dialog({
+			    autoOpen: false,
+			    width: 440,
+			    buttons: {
+						"Login": function() {
+						  $("#login_form").submit();
+							$(this).dialog("close"); 
+						}, 
+						"Cancel": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+			  });
+				
+			  // Dialog Link
+			  $('#login_link').click(function(){
+				  $('#login').dialog('open');
+				  return false;
+			  });
+			  
+			  // Preferences Dialog
+			  $('#preferences').dialog({
+			    autoOpen: false,
+			    width: 500,
+			    buttons: {
+						"Save": function() {
+						  $("#preferences_form").submit();
+							$(this).dialog("close"); 
+						}, 
+						"Cancel": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+			  });
+				
+			  // Dialog Link
+			  $('#preferences_link').click(function(){
+				  $('#preferences').dialog('open');
+				  return false;
+			  });
 			});
-			
-			/*
-			Selector notes:
-			$("#slideshow_footer ").children(":first-child")
-			$(".ui-icon-radio-off").next()
-			$(".ui-icon-radio-off").removeClass("ui-icon")
-			*/
 		</script>
 		<style type="text/css">
 			/* MOVE TO SEPARATE FILE FOR PRODUCTION */
@@ -142,10 +201,43 @@
 			.dot_nav_off {
 			  background-image: url('images/dot_nav_off.gif');
 			}
+			.login {
+			  position: absolute;
+			  top: 2px;
+			  right: 2px;
+			}
+			#login {
+			  /*display: none;*/
+			}
+			.post {
+			  background-color: #222;
+			  padding: 10px;
+			  width: 97%;
+			}
+			.post_title {
+			  font-size: 150%;
+			  font-weight: bold;
+			  margin-right: 10px;
+			}
+			.post_user_name {
+			  font-size: 80%;
+			  font-style: italic;
+			}
+			.post_content {
+			}
+			.post_break {
+			  background-color: #00F;
+			  height: 2px;
+			  width: 100%;
+			  border: 1px;
+			  border-style: solid;
+			  border-color: #0000BB;
+			}
 		</style>
 	</head>
 	<body>
 	<img class="background_image" src="images/background.png" bgproperties="fixed" />
+	<%= render 'site/flash', :flash => flash %>
     <%= yield %>
 	</body>
 </html>

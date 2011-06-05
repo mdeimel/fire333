@@ -1,0 +1,45 @@
+<% if session[:login_name].nil? %>
+	<a href="#" id="login_link" class="login">Login</a>
+	<div id="login" title="Login to F.I.R.E.">
+	  <% form_tag login_path, :method => "post", :id => "login_form" do %>
+	    <table>
+	      <tr>
+	        <td>Login Name:</td>
+	        <td><%= text_field_tag :login_name %></td>
+	      </tr>
+	      <tr>
+	        <td>Password:</td>
+	        <td><%= password_field_tag :password %><td>
+	      </tr>
+	    </table>
+	  <% end %>
+	</div>
+<% else %>
+  <div class="login">
+    <%= session[:login_name] %>
+    <a href="#" id="preferences_link">Preferences</a>
+    <a href="/logout">Logout</a>
+  </div>
+  <div id="preferences" title="Preferences">
+    <% form_tag preferences_path, :method => "post", :id => "preferences_form" do %>
+      <table>
+        <tr>
+          <td>New Login Name:</td>
+          <td><%= text_field_tag :new_login_name %></td>
+        </tr>
+        <tr>
+          <td>New Display Name:</td>
+          <td><%= text_field_tag :new_display_name %></td>
+        </tr>
+        <tr>
+          <td>New Password:</td>
+          <td><%= password_field_tag :password %></td>
+        </tr>
+        <tr>
+          <td>Confirm Password:</td>
+          <td><%= password_field_tag :confirm_password %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+<% end %>

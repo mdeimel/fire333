@@ -1,3 +1,5 @@
+<%= render 'site/login' %>
+
 <div id="page">
 	<div class="transparent_border">
 		<img src="images/header.png" />
@@ -25,20 +27,16 @@
 			<li><a href="#tabs-4"><span>WHY</span> <i>f.i.r.e.</i>?</a></li>
 		</ul>
 		<div id="tabs-1">
-			Explanation of the organization.<br><br>
-			Blog of the leaders.<br><br>
-			Calendar of upcoming events.<br><br>
+		  <%= render 'site/who_tab' %>
 		</div>
 		<div id="tabs-2">
-			Specifcs on the sessions with groups.<br><br>
-			Forum section where people can ask questions. Or possibly static content on most commonly asked questions.<br><br>
+		  <%= render 'site/what_tab' %>
 		</div>
 		<div id="tabs-3">
-			Contact section.<br><br>
-			Section outlining/describing cost structure.<br><br>
+		  <%= render 'site/how_tab' %>
 		</div>
 		<div id="tabs-4">
-			Why fire?<br><br>
+		  <%= render 'site/why_tab' %>
 		</div>
 	</div>
 </div>
