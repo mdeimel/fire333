@@ -1,13 +1,15 @@
-<div class="post">
-  <span class="event_type"><%= event_type %></span>
-  <div class="line_break"></div>
-  <div class="event_content">
-  <% for event in events %>
-    <span class="event_title"><%= event.title %></span><br>
-    <%= event.start.strftime("%B %d, %Y (%A)") %><br>
-    <span class="event_description"><%= event.description %></span><br>
-    <span class="event_lighter">Location: </span><%= event.location %><br>
-    <span class="event_lighter">Time: </span><%= event.start.strftime("%l:%M %P") %> - <%= event.end.strftime("%l:%M %P") %><br><br>
-  <% end %>
+<% if !events.nil? && !events.empty? %>
+  <div class="post">
+    <span class="event_type"><%= event_type %></span>
+    <div class="line_break"></div>
+    <div class="event_content">
+    <% for event in events %>
+      <span class="event_title"><%= event.title %></span><br>
+      <%= event.start.strftime("%B %d, %Y (%A)") %><br>
+      <span class="event_description"><%= event.description %></span><br>
+      <span class="event_lighter">Location: </span><%= event.location %><br>
+      <span class="event_lighter">Time: </span><%= event.start.strftime("%l:%M %P") %> - <%= event.end.strftime("%l:%M %P") %><br><br>
+    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
