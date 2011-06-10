@@ -6,5 +6,7 @@ Fire333::Application.routes.draw do
   #match '/posts/new' => "Post#new"
   match 'new_post' => "Post#new"
   match '/post/:id' => "Post#show"
+  match 'new_event' => "Event#new"
+  match '/event/:id' => "Event#show"
   #resource :posts
 end

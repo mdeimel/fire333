@@ -11,6 +11,8 @@
 			$(function(){
 				// Tabs
 				$('#tabs').tabs();
+				// Datepicker
+				$('.datepicker').datepicker();
 			});
 
 			FIRE = {};
@@ -225,13 +227,25 @@
 			}
 			.post_content {
 			}
-			.post_break {
+			.line_break {
 			  background-color: #00F;
 			  height: 2px;
 			  width: 100%;
 			  border: 1px;
 			  border-style: solid;
 			  border-color: #0000BB;
+			}
+			.event_content {
+			  font-size: 75%;
+			}
+			.event_title {
+			  font-weight: bold;
+			}
+			.event_description {
+			  font-style: italic;
+			}
+			.event_lighter {
+			  color: #777;
 			}
 		</style>
 	</head>

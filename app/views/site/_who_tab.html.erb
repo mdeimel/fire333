@@ -1,11 +1,10 @@
 			Explanation of the organization.<br><br>
 			Blog of the leaders.<br><br>
-			Calendar of upcoming events.<br><br>
 <% if !@post.nil? %>
   <div class="post">
     <span class="post_title"><%=@post.title%></span>
     <span class="post_user_name"><%=@post.user.display_name%></span>
-    <div class="post_break"></div>
+    <div class="line_break"></div>
     <div class="post_content"><%=simple_format @post.content%></div>
     <% if @post.id > 1 %>
       <br>

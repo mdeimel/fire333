@@ -1,6 +1,8 @@
 class SiteController < ApplicationController
   def index
     @post = Post.find(:last)
+    @upcoming_events = Event.upcoming
+    @recent_events = Event.recent
     respond_to do |format|
       format.html # index.html.erb
     end
