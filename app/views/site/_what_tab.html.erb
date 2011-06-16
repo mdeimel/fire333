@@ -1,26 +1,33 @@
-Contact section.<br><br>
-Section outlining/describing cost structure.<br><br>
-<%= render :partial => 'list_events', :locals => { :event_type => "Upcoming Events", :events => @upcoming_events } %>
-<%= render :partial => 'list_events', :locals => { :event_type => "Recent Events", :events => @recent_events } %>
+<div class="heading">VISION</div>
+<div class="content_section">
+Be the instrument God is using to cultivate an Intercultural way of life in His children throughout the
+world.
+</div>
+<br>
 
-<% if !session[:login_name].nil? %>
-  <br><br>
-  <% form_tag new_event_path, :method => "post", :id => "new_event" do %>
-    <fieldset>
-      <legend>New Event</legend>
-      Title:
-      <%= text_field_tag :title, nil, :size=>55 %>
-      Description:
-      <%= text_field_tag :description, nil, :size=>55 %>
-      Location:
-      <%= text_field_tag :location, nil, :size=>55 %>
-      Date:<br>
-      <%= text_field_tag :date, nil, :size=>12, :class=>"datepicker" %><br>
-      Start Time:<br>
-      <%= text_field_tag :start, nil, :size=>12 %><br>
-      End Time:<br>
-      <%= text_field_tag :end, nil, :size=>12 %><br>
-      <%= submit_tag "Create" %>
-    </fieldset>
-  <% end %>
-<% end %>
+<div class="heading">MISSION</div>
+<div class="content_section">
+Our task in the mission Christ gave His followers—“make disciples of all nations”—is fourfold:
+<ol>
+<li><span class="heading">EQUIP</span> God’s children with biblical cross-cultural communication and relationships skills that enable them to relate effectively to the different people of the nations.
+<li><span class="heading">MENTOR</span> His people in the intercultural way of life that matures their knowledge of God and strengthens their walk with Christ.
+<li><span class="heading">FACILITATE</span> His followers in their journey of moving from the desire to love the people of the nations to the ability to express that love respectfully and meaningfully.
+<li><span class="heading">ASSIST</span> in forming and developing biblical communities where people live out an intercultural life that is compelling to those who do not follow Christ, and is in harmony with God’s Word.
+</ol>
+</div>
+
+<div class="heading">INTERCULTURAL</div>
+<div class="content_section">
+Intercultural is not about celebrating cultural diversity, but diverse cultures celebrating the Risen Lord Jesus Christ together. It is seeing Jesus through the eyes of other cultures, not getting other cultures to see “my” Jesus. It is proclaiming Jesus to all cultures and ethnic groups that He loves them and is the answer to their way of life. IT IS ABOUT JESUS BEING THE HEAD OF THE CHURCH and the center of cultural diversity. It is where all cultures have equal status, respect, and acceptance in community due to their common faith in Jesus Christ.
+<br><br>
+<i>
+<div class="content_section">
+After these things I looked, and behold, a great multitude which no one could count, from
+every nation and all tribes and peoples and tongues, standing before the throne and before
+the Lamb, clothed in white robes, and palm branches were in their hands; and they cry out
+with a loud voice, saying, "Salvation to our God who sits on the throne, and to the Lamb."
+</i>
+<br><br>
+Revelation 7:9-10
+</div>
+</div>
