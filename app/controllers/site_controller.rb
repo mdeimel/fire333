@@ -3,6 +3,7 @@ class SiteController < ApplicationController
     @post = Post.find(:last)
     @upcoming_events = Event.upcoming
     @recent_events = Event.recent
+    @attachments = Attachment.select_all
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -27,7 +28,6 @@ class SiteController < ApplicationController
   
   def preferences
     user = User.find(:first, :conditions => ['login_name=?', session[:login_name]])
-    #debugger;
     # Change login_name
     if (!params[:new_login_name].nil? && params[:new_login_name].length>0)
       user.login_name = params[:new_login_name]

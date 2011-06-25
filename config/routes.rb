@@ -8,5 +8,7 @@ Fire333::Application.routes.draw do
   match '/post/:id' => "Post#show"
   match 'new_event' => "Event#new"
   match '/event/:id' => "Event#show"
+  match '/attachment/create' => "Attachment#create", :as => "new_attachment"
+  match '/attachment/:id' => "Attachment#show", :as => "show_attachment"
   #resource :posts
 end

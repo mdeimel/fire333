@@ -1,6 +1,6 @@
 <%= render :partial => 'list_events', :locals => { :event_type => "Upcoming Events", :events => @upcoming_events } %>
 <%= render :partial => 'list_events', :locals => { :event_type => "Recent Events", :events => @recent_events } %>
-
+<%= render :partial => 'list_attachments', :locals => { :attachments => @attachments } %>
 <% if !session[:login_name].nil? %>
   <br><br>
   <% form_tag new_event_path, :method => "post", :id => "new_event" do %>
@@ -19,6 +19,19 @@
       End Time:<br>
       <%= text_field_tag :end, nil, :size=>12 %><br>
       <%= submit_tag "Create" %>
+    </fieldset>
+  <% end %>
+  <br><br>
+  <% form_tag new_attachment_path, :multipart => true do %>
+    <fieldset>
+      <legend>New File</legend>
+      File Name:
+      <%= text_field_tag :displayname, nil, :size=>55 %>
+      Description:
+      <%= text_field_tag :description, nil, :size=>55 %>
+      <%= file_field_tag 'attachment', :class=>"attachment_field" %>
+      <br>
+      <%= submit_tag "Upload File" %>
     </fieldset>
   <% end %>
 <% end %>
