@@ -1,0 +1,17 @@
+<br><br>
+<span class="event_type">Downloadable Content</span>
+<div class="line_break"></div>
+<br>
+<% if !attachments.nil? && !attachments.empty? %>
+  <table>
+  <% for attachment in attachments %>
+    <tr>
+      <td rowspan=2><%= render :partial => 'filetype', :locals => { :content_type => attachment.content_type, :attachment_id => attachment.id } %></td>
+      <td><%= link_to attachment.displayname, show_attachment_path(attachment.id) %></td>
+    </tr>
+    <tr>
+      <td>&nbsp&nbsp&nbsp&nbsp<i style="font-size:80%" class="event_lighter"><%= attachment.description %></i></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>

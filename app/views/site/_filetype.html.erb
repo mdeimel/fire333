@@ -1,0 +1,15 @@
+<% if(content_type.include?("png") || content_type.include?("jpg") || content_type.include?("jpeg")) %>
+  <%= link_to image_tag("images/icons/jpeg.jpg"), show_attachment_path(attachment_id) %>
+<% elsif content_type.include? "word" %>
+  <%= link_to image_tag("/images/icons/word.jpg"), show_attachment_path(attachment_id) %>
+<% elsif content_type.include? "powerpoint" %>
+  <%= link_to image_tag("/images/icons/powerpoint.jpg"), show_attachment_path(attachment_id) %>
+<% elsif content_type.include? "excel" %>
+  <%= link_to image_tag("/images/icons/excel.jpg"), show_attachment_path(attachment_id) %>
+<% elsif content_type.include? "pdf" %>
+  <%= link_to image_tag("/images/icons/pdf.jpg"), show_attachment_path(attachment_id) %>
+<% elsif content_type.include? "zip" %>
+  <%= link_to image_tag("/images/icons/zip.jpg"), show_attachment_path(attachment_id) %>
+<% else %>
+  <%= link_to image_tag("/images/icons/file.jpg"), show_attachment_path(attachment_id) %>
+<% end %>
