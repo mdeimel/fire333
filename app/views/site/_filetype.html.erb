@@ -1,5 +1,5 @@
 <% if(content_type.include?("png") || content_type.include?("jpg") || content_type.include?("jpeg")) %>
-  <%= link_to image_tag("images/icons/jpeg.jpg"), show_attachment_path(attachment_id) %>
+  <%= link_to image_tag("/images/icons/jpeg.jpg"), show_attachment_path(attachment_id) %>
 <% elsif content_type.include? "word" %>
   <%= link_to image_tag("/images/icons/word.jpg"), show_attachment_path(attachment_id) %>
 <% elsif content_type.include? "powerpoint" %>
