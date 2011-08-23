@@ -1,9 +1,10 @@
 class Attachment < ActiveRecord::Base
+  belongs_to :user
   validates_presence_of :filename, :content_type, :data, :message => "Can't be blank. "
   
   # Get the smallest set of information - and specifically exclude
   # "data" field, as the query would be very expensive
-  scope :select_all, select("id, displayname, description, content_type")
+  scope :select_all, select("id, displayname, description, content_type, user_id")
 
   def uploaded_file=(incoming_file)
     self.filename = incoming_file.original_filename

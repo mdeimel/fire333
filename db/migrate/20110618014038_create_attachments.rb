@@ -6,6 +6,7 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :content_type
       t.binary :data
       t.string :description
+      t.references :user
 
       t.timestamps
     end

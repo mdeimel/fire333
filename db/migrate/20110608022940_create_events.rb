@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :start
       t.datetime :end
       t.string :location
-      t.integer :user_id
+      t.references :user
 
       t.timestamps
     end

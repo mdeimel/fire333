@@ -1,6 +1,8 @@
 class SiteController < ApplicationController
   def index
-    @post = Post.find(:last)
+    @post = params[:post_id].nil? ? Post.find(:last) : Post.find(params[:post_id])
+    @next_post = @post.next
+    @prev_post = @post.prev
     @upcoming_events = Event.upcoming
     @recent_events = Event.recent
     @attachments = Attachment.select_all

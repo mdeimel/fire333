@@ -1,5 +1,9 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :location, :start # :end doesn't have to be specified
+  belongs_to :user
+  validates :title, :presence => {:message => "Title is required."}
+  validates :location, :presence => {:message => "Location is required."}
+  validates :start, :presence => {:message => "Start time is required. "}
+  # :end doesn't have to be specified
   
   scope :recent, order("start DESC").where("start < ?", Date.today).limit(2)
   scope :upcoming, order("start ASC").where("start >= ?", Date.today).limit(4)

@@ -24,11 +24,19 @@ We have over forty years of cross-cultural experience in the following countries
   <div class="post">
     <span class="post_title"><%=@post.title%></span>
     <span class="post_user_name"><%=@post.user.display_name%></span>
+    <% if !session[:user_id].nil? && session[:user_id]==@post.user_id %>
+      <% form_tag delete_post_path(@post.id), :method => "delete", :class => "delete_button" do %>
+        <%= image_submit_tag "/images/icons/delete.png", :confirm => "Are you sure you want to delete this post?", :method => "delete" %>
+      <% end %>
+    <% end %>
     <div class="line_break"></div>
     <div class="post_content"><%=simple_format @post.content%></div>
-    <% if @post.id > 1 %>
-      <br>
-      <button id="next_post" type="button" onclick="FIRE.getPost(<%=@post.id-1%>, '<%=session[:login_name]%>')">Next Post</button>
+    | 
+    <% if !@prev_post.nil? %>
+      <%= link_to "Previous Post", show_post_path(@prev_post.id) %> | 
+    <% end %>
+    <% if !@next_post.nil? %>
+      <%= link_to "Next Post", show_post_path(@next_post.id) %> |
     <% end %>
   </div>
 <% end %>

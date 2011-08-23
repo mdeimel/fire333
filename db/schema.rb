@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110618014038) do
     t.string   "content_type"
     t.binary   "data"
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,9 +2,11 @@ TODO
 ====
 * Limit create APIs by requiring the user to already be logged in
 * Move JS & CSS to main.js/css files
-* Clean-up and center file-type/content_type images
 * Add delete links to posts/events/attachments if the creator is also the current user
+* Instead of displaying "next" post, show "more posts", and append to bottom
+* Creating event, 'tab' after date box doesn't work
 
 DONE
 ====
-
+* Deleting an attachment doesn't give a confirmation box
+* Clean-up and center file-type/content_type images

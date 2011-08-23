@@ -1,17 +1,17 @@
-<%= render :partial => 'list_events', :locals => { :event_type => "Upcoming Events", :events => @upcoming_events } %>
-<%= render :partial => 'list_events', :locals => { :event_type => "Recent Events", :events => @recent_events } %>
-<%= render :partial => 'list_attachments', :locals => { :attachments => @attachments } %>
+<%= render :partial => 'site/list_events', :locals => { :event_type => "Upcoming Events", :events => @upcoming_events } %>
+<%= render :partial => 'site/list_events', :locals => { :event_type => "Recent Events", :events => @recent_events } %>
+<%= render :partial => 'site/list_attachments', :locals => { :attachments => @attachments } %>
 <% if !session[:login_name].nil? %>
   <br><br>
   <% form_tag new_event_path, :method => "post", :id => "new_event" do %>
     <fieldset>
       <legend>New Event</legend>
-      Title:
-      <%= text_field_tag :title, nil, :size=>55 %>
-      Description:
-      <%= text_field_tag :description, nil, :size=>55 %>
-      Location:
-      <%= text_field_tag :location, nil, :size=>55 %>
+      Title:<br>
+      <%= text_field_tag :title, nil, :size=>55 %><br>
+      Description:<br>
+      <%= text_field_tag :description, nil, :size=>55 %><br>
+      Location:<br>
+      <%= text_field_tag :location, nil, :size=>55 %><br>
       Date:<br>
       <%= text_field_tag :date, nil, :size=>12, :class=>"datepicker" %><br>
       Start Time:<br>

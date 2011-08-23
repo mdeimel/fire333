@@ -13,7 +13,7 @@
 				$('#tabs').tabs();
 				// Datepicker
 				$('.datepicker').datepicker();
-			});
+		  });
 
 			FIRE = {};
 			FIRE.fade_time = 1500;
@@ -69,7 +69,7 @@
             }
           },
           dataType: "json"
-        }); 
+        });
 			};
 			
 			$(function() {
@@ -118,6 +118,10 @@
 			  $('#preferences_link').click(function(){
 				  $('#preferences').dialog('open');
 				  return false;
+			  });
+			  
+			  $('input[data-confirm]').click(function(){
+			    return confirm($(this).data("confirm"));
 			  });
 			});
 		</script>
@@ -272,6 +276,9 @@
 			}
 			.attachment_field {
 			  color: white;
+			}
+			.delete_button {
+			  display: inline;
 			}
 		</style>
 	</head>

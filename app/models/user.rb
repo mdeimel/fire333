@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 8, :message => "The password must be 8 characters or more. "
   
   has_many :posts
+  has_many :events
+  has_many :attachments
   
   def before_save
     hash_password if self.salt.nil?
