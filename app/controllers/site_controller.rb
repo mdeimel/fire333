@@ -33,14 +33,20 @@ class SiteController < ApplicationController
     # Change login_name
     if (!params[:new_login_name].nil? && params[:new_login_name].length>0)
       user.login_name = params[:new_login_name]
-      user.save
-      session[:login_name] = user.login_name
+      if user.save
+        session[:login_name] = user.login_name
+      else
+        flash[:error] = user.errors[:login_name][0]
+      end
     end
     # Change display_name
     if (!params[:new_display_name].nil? && params[:new_display_name].length>0)
       user.display_name = params[:new_display_name]
-      user.save
-      session[:display_name] = user.display_name
+      if user.save
+        session[:display_name] = user.display_name
+      else
+        flash[:error] = user.errors[:display_name][0]
+      end
     end
     # Change password
     if ((!params[:password].nil? && params[:password].length>0) && (!params[:confirm_password].nil? && params[:confirm_password].length>0))

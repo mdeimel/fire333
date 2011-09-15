@@ -198,9 +198,11 @@
 			  background-image: url('images/dot_nav_off.gif');
 			}
 			.login {
-			  position: absolute;
-			  top: 2px;
-			  right: 2px;
+			  position: relative;
+			  /* The bottom and margin are to counteract the "body" margins */
+			  bottom: -50px;
+			  margin: -48px;
+			  padding: 0;
 			}
 			#login {
 			  /*display: none;*/
@@ -284,7 +286,8 @@
 	</head>
 	<body>
 	<img class="background_image" src="images/background.png" bgproperties="fixed" />
-	<%= render 'site/flash', :flash => flash %>
+	  <%= render 'site/flash', :flash => flash %>
     <%= yield %>
+    <%= render 'site/login' %>
 	</body>
 </html>

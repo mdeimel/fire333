@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :login_name, :password, :message => "Can't be blank. "
   validates_presence_of :display_name, :password, :message => "Can't be blank. "
-  validates_uniqueness_of :login_name, :case_sensitive => false, :message => "Name Is Not unique. "
-  validates_uniqueness_of :display_name, :case_sensitive => false, :message => "Display Name Is Not unique. "
+  validates_uniqueness_of :login_name, :case_sensitive => false, :message => "Login name is not unique. "
+  validates_uniqueness_of :display_name, :case_sensitive => false, :message => "Display name is not unique. "
   validates_confirmation_of :password, :message => "The password must be the same in both fields. "
-  validates_length_of :password, :minimum => 8, :message => "The password must be 8 characters or more. "
+  #validates_length_of :password, :minimum => 8, :message => "The password must be 8 characters or more. "
   
   has_many :posts
   has_many :events
