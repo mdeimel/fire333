@@ -1,10 +1,12 @@
 <div class="post" id="contact_info">
-  <span class="event_type">Contact us at <a href="mailto:terrielillie@comcast.net">TerrieLillie@comcast.net</a></span>
+  <span class="event_type">Contact us at <a href="mailto:info@fire333.org">info@fire333.org</a></span>
 </div>
-<br>
 
-<%= render :partial => 'site/list_events', :locals => { :event_type => "Upcoming Events", :events => @upcoming_events } %>
-<%= render :partial => 'site/list_events', :locals => { :event_type => "Recent Events", :events => @recent_events } %>
+<% if false # Removed until FIRE has more events %>
+  <%= render :partial => 'site/list_events', :locals => { :event_type => "Upcoming Events", :events => @upcoming_events } %>
+  <%= render :partial => 'site/list_events', :locals => { :event_type => "Recent Events", :events => @recent_events } %>
+<% end %>
+
 <%= render :partial => 'site/list_attachments', :locals => { :attachments => @attachments } %>
 <% if !session[:login_name].nil? %>
   <br><br>
